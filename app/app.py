@@ -2380,61 +2380,104 @@ st.html(
     </div>
 
     <div class="section-subtitle">
+        Recorded changes in download speed, signal strength and network performance
+    </div>
+    """
+)
+
+
+# ------------------------------------------------------------
+# Aggregate the raw 5-minute observations into 30-minute
+# intervals. This keeps the real data while making the trend
+# readable instead of plotting 1,000 noisy points.
+# ------------------------------------------------------------
+
+trend_source = df.copy()
+
+trend_source["trend_period"] = (
+    trend_source["timestamp"]
+    .dt.floor("30min")
+)
+
+
+trend_data = (
+    trend_source
+    .groupby("trend_period", as_index=False)
+    .agg(
+        avg_speed=(
+            "avg_download_mbps",
+            "mean",
+        ),
+        avg_rssi=(
+            "rssi_dbm",
+            "mean",
+        ),
+        avg_devices=(
+            "connected_devices",
+            "mean",
+        ),
+    )
+    .sort_values("trend_period")
+)
+
+
+# ------------------------------------------------------------
+# DOWNLOAD SPEED TREND
+# ------------------------------------------------------------
+
+st.html(
+    """
+    <div class="section-subtitle">
         Download speed over the recorded observation period
     </div>
     """
 )
 
 
-trend_data = (
-
-    df.groupby(
-        "timestamp",
-        as_index=False,
-    )
-
-    .agg(
-        avg_speed=(
-            "avg_download_mbps",
-            "mean",
-        ),
-
-        avg_rssi=(
-            "rssi_dbm",
-            "mean",
-        ),
-    )
-)
-
-
-trend_fig = px.line(
-
+speed_trend_fig = px.line(
     trend_data,
-
-    x="timestamp",
-
+    x="trend_period",
     y="avg_speed",
-
-    title=
-        "Average download speed over time",
+    markers=True,
+    title="Average download speed over time",
 )
 
 
-trend_fig.update_layout(
+speed_trend_fig.update_traces(
+    line=dict(
+        color="#ffffff",
+        width=2,
+    ),
+    marker=dict(
+        color="#ffffff",
+        size=4,
+    ),
+)
 
-    height=400,
 
+speed_trend_fig.update_layout(
+    height=390,
     paper_bgcolor="#070707",
-
     plot_bgcolor="#070707",
-
     font=dict(
         family="Courier New",
         color="#ffffff",
     ),
-
+    hoverlabel=dict(
+        bgcolor="#101010",
+        font=dict(
+            family="Courier New",
+            color="#ffffff",
+        ),
+    ),
+    title=dict(
+        font=dict(
+            family="Courier New",
+            size=16,
+            color="#ffffff",
+        )
+    ),
     xaxis=dict(
-
         title=dict(
             text="Time",
             font=dict(
@@ -2442,15 +2485,14 @@ trend_fig.update_layout(
                 color="#dddddd",
             ),
         ),
-
         tickfont=dict(
             family="Courier New",
             color="#c7c7c7",
         ),
+        gridcolor="#333333",
+        zerolinecolor="#444444",
     ),
-
     yaxis=dict(
-
         title=dict(
             text="Mbps",
             font=dict(
@@ -2458,7 +2500,208 @@ trend_fig.update_layout(
                 color="#dddddd",
             ),
         ),
+        tickfont=dict(
+            family="Courier New",
+            color="#c7c7c7",
+        ),
+        gridcolor="#333333",
+        zerolinecolor="#444444",
+    ),
+    margin=dict(
+        l=60,
+        r=25,
+        t=60,
+        b=55,
+    ),
+)
 
+
+st.plotly_chart(
+    speed_trend_fig,
+    use_container_width=True,
+    config={
+        "displaylogo": False,
+    },
+)
+
+
+# ------------------------------------------------------------
+# SIGNAL STRENGTH TREND
+# ------------------------------------------------------------
+
+st.html(
+    """
+    <div class="section-subtitle">
+        Average Wi-Fi signal strength over the recorded observation period
+    </div>
+    """
+)
+
+
+signal_trend_fig = px.line(
+    trend_data,
+    x="trend_period",
+    y="avg_rssi",
+    markers=True,
+    title="Average signal strength over time",
+)
+
+
+signal_trend_fig.update_traces(
+    line=dict(
+        color="#ffffff",
+        width=2,
+    ),
+    marker=dict(
+        color="#ffffff",
+        size=4,
+    ),
+)
+
+
+signal_trend_fig.update_layout(
+    height=390,
+    paper_bgcolor="#070707",
+    plot_bgcolor="#070707",
+    font=dict(
+        family="Courier New",
+        color="#ffffff",
+    ),
+    hoverlabel=dict(
+        bgcolor="#101010",
+        font=dict(
+            family="Courier New",
+            color="#ffffff",
+        ),
+    ),
+    title=dict(
+        font=dict(
+            family="Courier New",
+            size=16,
+            color="#ffffff",
+        )
+    ),
+    xaxis=dict(
+        title=dict(
+            text="Time",
+            font=dict(
+                family="Courier New",
+                color="#dddddd",
+            ),
+        ),
+        tickfont=dict(
+            family="Courier New",
+            color="#c7c7c7",
+        ),
+        gridcolor="#333333",
+        zerolinecolor="#444444",
+    ),
+    yaxis=dict(
+        title=dict(
+            text="RSSI (dBm)",
+            font=dict(
+                family="Courier New",
+                color="#dddddd",
+            ),
+        ),
+        tickfont=dict(
+            family="Courier New",
+            color="#c7c7c7",
+        ),
+        gridcolor="#333333",
+        zerolinecolor="#444444",
+    ),
+    margin=dict(
+        l=60,
+        r=25,
+        t=60,
+        b=55,
+    ),
+)
+
+
+st.plotly_chart(
+    signal_trend_fig,
+    use_container_width=True,
+    config={
+        "displaylogo": False,
+    },
+)
+
+
+# ------------------------------------------------------------
+# NETWORK PERFORMANCE
+# ------------------------------------------------------------
+
+st.html(
+    """
+    <div class="section-subtitle">
+        Average download performance across observed Wi-Fi networks
+    </div>
+    """
+)
+
+
+network_trend_data = (
+    network_summary[[
+        "network_name",
+        "avg_speed",
+    ]]
+    .sort_values(
+        "avg_speed",
+        ascending=False,
+    )
+)
+
+
+network_performance_fig = px.bar(
+    network_summary,
+    x="network_name",
+    y="avg_speed",
+    title="Average download speed by network",
+    color_discrete_sequence=["#0088ff"],
+)
+
+network_performance_fig.update_traces(
+    marker_color="#0088ff",
+    texttemplate="%{y:.1f} Mbps",
+    textposition="outside",
+    textfont=dict(
+        family="Courier New",
+        color="#ffffff",
+        size=13,
+    ),
+)
+
+network_performance_fig.update_layout(
+    height=400,
+    paper_bgcolor="#070707",
+    plot_bgcolor="#070707",
+    font=dict(
+        family="Courier New",
+        color="#ffffff",
+    ),
+    xaxis=dict(
+        title=dict(
+            text="Network",
+            font=dict(
+                family="Courier New",
+                color="#dddddd",
+            ),
+        ),
+        tickfont=dict(
+            family="Courier New",
+            color="#c7c7c7",
+        ),
+    ),
+    yaxis=dict(
+        title=dict(
+            text="Average speed (Mbps)",
+            font=dict(
+                family="Courier New",
+                color="#dddddd",
+            ),
+        ),
         tickfont=dict(
             family="Courier New",
             color="#c7c7c7",
@@ -2466,20 +2709,14 @@ trend_fig.update_layout(
     ),
 )
 
-
 st.plotly_chart(
-
-    trend_fig,
-
+    network_performance_fig,
     use_container_width=True,
-
     config={
         "displaylogo": False,
     },
 )
 
-
-# ============================================================
 # FOOTER
 # ============================================================
 
@@ -2488,7 +2725,7 @@ st.html(
     <div class="wisense-footer">
 
         WISENSE · WI-FI INTELLIGENCE &amp; ANALYTICS
-        · STREAMLIT INTERFACE · PHASE 6
+        · STREAMLIT INTERFACE · PHASE 7
 
     </div>
     """
