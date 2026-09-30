@@ -1098,78 +1098,255 @@ st.html(
 )
 
 
-map_fig = px.scatter_map(
-    df,
+map_filter_col1, map_filter_col2 = st.columns(2)
 
-    lat="latitude",
+with map_filter_col1:
+    selected_network = st.selectbox(
+        "Network",
+        ["All Networks"] + sorted(
+            df["network_name"].dropna().unique().tolist()
+        ),
+        key="map_network_filter",
+    )
 
-    lon="longitude",
+with map_filter_col2:
+    cluster_values = sorted(
+        pd.to_numeric(df["cluster"], errors="coerce")
+        .dropna()
+        .astype(int)
+        .unique()
+        .tolist()
+    )
 
-    color="network_name",
-
-    hover_name="network_name",
-
-    hover_data={
-        "rssi_dbm": ":.1f",
-        "avg_download_mbps": ":.1f",
-        "connected_devices": True,
-        "latitude": False,
-        "longitude": False,
-    },
-
-    zoom=11,
-
-    height=480,
-)
+    selected_cluster = st.selectbox(
+        "Cluster",
+        ["All Clusters"] + cluster_values,
+        key="map_cluster_filter",
+    )
 
 
-map_fig.update_layout(
+map_data = df.copy()
 
-    map_style="carto-darkmatter",
+if selected_network != "All Networks":
+    map_data = map_data[
+        map_data["network_name"] == selected_network
+    ]
 
-    margin=dict(
-        l=0,
-        r=0,
-        t=0,
-        b=0,
-    ),
+if selected_cluster != "All Clusters":
+    map_data = map_data[
+        pd.to_numeric(
+            map_data["cluster"],
+            errors="coerce",
+        ) == int(selected_cluster)
+    ]
 
-    paper_bgcolor="#070707",
 
-    plot_bgcolor="#070707",
+if map_data.empty:
 
-    font=dict(
-        family="Courier New",
-        color="#ffffff",
-    ),
+    st.warning(
+        "No Wi-Fi observations match the selected map filters."
+    )
 
-    legend=dict(
+else:
+
+    # Center the map on the actual WiSense observations instead of
+    # allowing Plotly to fall back to a world-scale view.
+    map_center_lat = float(map_data["latitude"].mean())
+    map_center_lon = float(map_data["longitude"].mean())
+
+    map_fig = px.scatter_map(
+        map_data,
+
+        lat="latitude",
+
+        lon="longitude",
+
+        color="network_name",
+
+        hover_name="network_name",
+
+        hover_data={
+            "rssi_dbm": ":.1f",
+            "avg_download_mbps": ":.1f",
+            "connected_devices": True,
+            "frequency_mhz": True,
+            "cluster": True,
+            "latitude": ":.5f",
+            "longitude": ":.5f",
+        },
+
+        zoom=15,
+
+        center={
+            "lat": map_center_lat,
+            "lon": map_center_lon,
+        },
+
+        height=560,
+    )
+
+
+    map_fig.update_traces(
+        marker=dict(
+            size=8,
+            opacity=0.85,
+        )
+    )
+
+
+    map_fig.update_layout(
+
+        map_style="carto-darkmatter",
+
+        margin=dict(
+            l=0,
+            r=0,
+            t=0,
+            b=0,
+        ),
+
+        paper_bgcolor="#070707",
+
+        plot_bgcolor="#070707",
+
         font=dict(
             family="Courier New",
-            size=13,
             color="#ffffff",
         ),
 
-        title=dict(
+        legend=dict(
+
+            title=dict(
+                text="NETWORK",
+                font=dict(
+                    family="Courier New",
+                    size=13,
+                    color="#ffffff",
+                ),
+            ),
+
             font=dict(
                 family="Courier New",
                 size=13,
                 color="#ffffff",
-            )
+            ),
         ),
-    ),
+    )
+
+
+    st.plotly_chart(
+        map_fig,
+
+        use_container_width=True,
+
+        config={
+            "displaylogo": False,
+        },
+    )
+
+
+# ============================================================
+# SPATIAL SUMMARY
+# ============================================================
+
+st.html(
+    """
+    <div class="section-title">
+        SPATIAL SUMMARY
+    </div>
+
+    <div class="section-subtitle">
+        Geographic summary of the filtered Wi-Fi environment
+    </div>
+    """
 )
 
 
-st.plotly_chart(
-    map_fig,
+spatial_col1, spatial_col2, spatial_col3, spatial_col4 = st.columns(4)
 
-    use_container_width=True,
 
-    config={
-        "displaylogo": False,
-    },
-)
+with spatial_col1:
+    st.html(
+        f"""
+        <div class="metric-card">
+            <div class="metric-label">
+                MAP POINTS
+            </div>
+            <div class="metric-value">
+                {len(map_data):,}
+            </div>
+            <div class="metric-detail">
+                observations shown
+            </div>
+        </div>
+        """
+    )
+
+
+with spatial_col2:
+    st.html(
+        f"""
+        <div class="metric-card">
+            <div class="metric-label">
+                NETWORKS
+            </div>
+            <div class="metric-value">
+                {map_data["network_name"].nunique()}
+            </div>
+            <div class="metric-detail">
+                networks represented
+            </div>
+        </div>
+        """
+    )
+
+
+with spatial_col3:
+    filtered_mean_rssi = (
+        map_data["rssi_dbm"].mean()
+        if not map_data.empty
+        else float("nan")
+    )
+
+    st.html(
+        f"""
+        <div class="metric-card">
+            <div class="metric-label">
+                AVG SIGNAL
+            </div>
+            <div class="metric-value">
+                {filtered_mean_rssi:.1f}
+            </div>
+            <div class="metric-detail">
+                dBm
+            </div>
+        </div>
+        """
+    )
+
+
+with spatial_col4:
+    filtered_mean_speed = (
+        map_data["avg_download_mbps"].mean()
+        if not map_data.empty
+        else float("nan")
+    )
+
+    st.html(
+        f"""
+        <div class="metric-card">
+            <div class="metric-label">
+                AVG SPEED
+            </div>
+            <div class="metric-value">
+                {filtered_mean_speed:.1f}
+            </div>
+            <div class="metric-detail">
+                Mbps
+            </div>
+        </div>
+        """
+    )
 
 
 # ============================================================
@@ -2655,31 +2832,47 @@ network_trend_data = (
 
 
 network_performance_fig = px.bar(
-    network_summary,
+    network_trend_data,
     x="network_name",
     y="avg_speed",
+    text="avg_speed",
     title="Average download speed by network",
-    color_discrete_sequence=["#0088ff"],
 )
+
 
 network_performance_fig.update_traces(
     marker_color="#0088ff",
-    texttemplate="%{y:.1f} Mbps",
+    texttemplate="%{text:.1f} Mbps",
     textposition="outside",
     textfont=dict(
         family="Courier New",
         color="#ffffff",
-        size=13,
+        size=12,
     ),
 )
 
+
 network_performance_fig.update_layout(
-    height=400,
+    height=390,
     paper_bgcolor="#070707",
     plot_bgcolor="#070707",
     font=dict(
         family="Courier New",
         color="#ffffff",
+    ),
+    hoverlabel=dict(
+        bgcolor="#101010",
+        font=dict(
+            family="Courier New",
+            color="#ffffff",
+        ),
+    ),
+    title=dict(
+        font=dict(
+            family="Courier New",
+            size=16,
+            color="#ffffff",
+        )
     ),
     xaxis=dict(
         title=dict(
@@ -2691,8 +2884,9 @@ network_performance_fig.update_layout(
         ),
         tickfont=dict(
             family="Courier New",
-            color="#c7c7c7",
+            color="#ffffff",
         ),
+        gridcolor="#333333",
     ),
     yaxis=dict(
         title=dict(
@@ -2706,8 +2900,26 @@ network_performance_fig.update_layout(
             family="Courier New",
             color="#c7c7c7",
         ),
+        gridcolor="#333333",
+        range=[
+            0,
+            max(
+                100,
+                float(
+                    network_trend_data["avg_speed"].max()
+                    * 1.20
+                ),
+            ),
+        ],
+    ),
+    margin=dict(
+        l=60,
+        r=40,
+        t=60,
+        b=55,
     ),
 )
+
 
 st.plotly_chart(
     network_performance_fig,
@@ -2717,6 +2929,7 @@ st.plotly_chart(
     },
 )
 
+
 # FOOTER
 # ============================================================
 
@@ -2725,7 +2938,7 @@ st.html(
     <div class="wisense-footer">
 
         WISENSE · WI-FI INTELLIGENCE &amp; ANALYTICS
-        · STREAMLIT INTERFACE · PHASE 7
+        · STREAMLIT INTERFACE · PHASE 8
 
     </div>
     """
