@@ -3,12 +3,15 @@ from __future__ import annotations
 import csv
 import re
 import subprocess
+import time
 from datetime import datetime
 from pathlib import Path
 
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
 OUTPUT_FILE = ROOT_DIR / "data" / "live_wifi.csv"
+
+SAMPLE_INTERVAL_SECONDS = 5
 
 
 def run_netsh() -> str:
@@ -120,8 +123,6 @@ def save_reading(data: dict) -> None:
         exist_ok=True
     )
 
-    file_exists = OUTPUT_FILE.exists()
-
     fieldnames = [
         "timestamp",
         "state",
@@ -134,6 +135,8 @@ def save_reading(data: dict) -> None:
         "receive_rate_mbps",
         "transmit_rate_mbps",
     ]
+
+    file_exists = OUTPUT_FILE.exists()
 
     with OUTPUT_FILE.open(
         "a",
@@ -152,31 +155,59 @@ def save_reading(data: dict) -> None:
         writer.writerow(data)
 
 
-def print_wifi_info(data: dict) -> None:
+def print_reading(data: dict, sample_number: int) -> None:
     print()
-    print("WISENSE — REAL-TIME WI-FI COLLECTOR")
+    print(f"WISENSE — LIVE SAMPLE #{sample_number}")
     print("=" * 45)
 
-    for key, value in data.items():
-        label = key.replace("_", " ").title()
-        print(f"{label:<24}: {value}")
+    print(f"Timestamp               : {data['timestamp']}")
+    print(f"State                   : {data['state']}")
+    print(f"Interface               : {data['interface']}")
+    print(f"SSID                    : {data['ssid']}")
+    print(f"Channel                 : {data['channel']}")
+    print(f"Signal Percent          : {data['signal_percent']}")
+    print(f"Receive Rate Mbps       : {data['receive_rate_mbps']}")
+    print(f"Transmit Rate Mbps      : {data['transmit_rate_mbps']}")
 
     print()
     print(f"Saved to: {OUTPUT_FILE}")
+
+
+def collect_continuously() -> None:
     print()
-    print("COLLECTION COMPLETE")
+    print("WISENSE — CONTINUOUS WI-FI COLLECTOR")
+    print("=" * 45)
+    print(f"Sampling interval: {SAMPLE_INTERVAL_SECONDS} seconds")
+    print("Press Ctrl+C to stop.")
+    print()
+
+    sample_number = 0
+
+    try:
+        while True:
+            sample_number += 1
+
+            try:
+                wifi_data = collect_wifi_info()
+                save_reading(wifi_data)
+                print_reading(wifi_data, sample_number)
+
+            except Exception as exc:
+                print()
+                print("COLLECTION ERROR")
+                print("-" * 45)
+                print(str(exc))
+
+            time.sleep(SAMPLE_INTERVAL_SECONDS)
+
+    except KeyboardInterrupt:
+        print()
+        print("=" * 45)
+        print("WISENSE COLLECTION STOPPED")
+        print(f"Total samples collected: {sample_number}")
+        print(f"Data file: {OUTPUT_FILE}")
+        print()
 
 
 if __name__ == "__main__":
-    try:
-        wifi_data = collect_wifi_info()
-
-        save_reading(wifi_data)
-
-        print_wifi_info(wifi_data)
-
-    except Exception as exc:
-        print()
-        print("WISENSE WI-FI COLLECTOR ERROR")
-        print("=" * 45)
-        print(str(exc))
+    collect_continuously()
