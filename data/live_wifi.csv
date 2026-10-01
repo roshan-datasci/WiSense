@@ -1,0 +1,2 @@
+timestamp,state,interface,ssid,bssid,radio_type,channel,signal_percent,receive_rate_mbps,transmit_rate_mbps
+2026-10-01T15:54:29,connected,Wi-Fi,realme GT,,802.11n,11,99,144,144
