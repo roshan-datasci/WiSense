@@ -1,8 +1,24 @@
+import sys
 from pathlib import Path
 
 import pandas as pd
 import plotly.express as px
 import streamlit as st
+
+# Make the project root importable when Streamlit is launched as app\app.py.
+ROOT_DIR = Path(__file__).resolve().parents[1]
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
+
+import pandas as pd
+import plotly.express as px
+import streamlit as st
+
+try:
+    from analysis.live_wifi import load_live_wifi, get_live_summary
+except ImportError:
+    load_live_wifi = None
+    get_live_summary = None
 
 
 # ============================================================
@@ -21,7 +37,6 @@ st.set_page_config(
 # PATHS
 # ============================================================
 
-ROOT_DIR = Path(__file__).resolve().parents[1]
 DATA_PATH = ROOT_DIR / "data" / "wifi_clustered.csv"
 
 
@@ -817,6 +832,39 @@ def load_data() -> pd.DataFrame:
 
 df = load_data()
 
+# ============================================================
+# LOCAL WI-FI COLLECTOR STATUS
+# ============================================================
+
+st.html("""<div class="section-title">LOCAL WI-FI COLLECTOR</div>
+<div class="section-subtitle">Adapter readings collected by the Windows collector on this machine.</div>""")
+
+if load_live_wifi is not None and get_live_summary is not None:
+    try:
+        live_df = load_live_wifi()
+        live = get_live_summary(live_df)
+        if not live:
+            st.info("No local readings yet. Start the collector with: python src/wifi_collector.py")
+        else:
+            live_cols = st.columns(5)
+            live_values = [
+                ("STATE / SSID", f"{live.get('ssid') or 'Unknown'}"),
+                ("SIGNAL", f"{live.get('signal')}%" if pd.notna(live.get('signal')) else "N/A"),
+                ("CHANNEL", str(live.get('channel') if pd.notna(live.get('channel')) else "N/A")),
+                ("RX RATE", f"{live.get('receive_rate')} Mbps" if pd.notna(live.get('receive_rate')) else "N/A"),
+                ("SAMPLES", str(live.get('samples', 0))),
+            ]
+            for col, (label, value) in zip(live_cols, live_values):
+                with col:
+                    st.metric(label, value)
+            st.caption("Local adapter telemetry. Receive/transmit link rates are not internet speed-test results.")
+            if not live_df.empty:
+                st.dataframe(live_df.tail(10), use_container_width=True, hide_index=True)
+    except Exception as exc:
+        st.warning(f"Could not read local collector data: {exc}")
+else:
+    st.info("Optional local collector module is not available. Add analysis/live_wifi.py to enable this panel.")
+
 
 # ============================================================
 # HEADER
@@ -1098,255 +1146,78 @@ st.html(
 )
 
 
-map_filter_col1, map_filter_col2 = st.columns(2)
+map_fig = px.scatter_map(
+    df,
 
-with map_filter_col1:
-    selected_network = st.selectbox(
-        "Network",
-        ["All Networks"] + sorted(
-            df["network_name"].dropna().unique().tolist()
-        ),
-        key="map_network_filter",
-    )
+    lat="latitude",
 
-with map_filter_col2:
-    cluster_values = sorted(
-        pd.to_numeric(df["cluster"], errors="coerce")
-        .dropna()
-        .astype(int)
-        .unique()
-        .tolist()
-    )
+    lon="longitude",
 
-    selected_cluster = st.selectbox(
-        "Cluster",
-        ["All Clusters"] + cluster_values,
-        key="map_cluster_filter",
-    )
+    color="network_name",
+
+    hover_name="network_name",
+
+    hover_data={
+        "rssi_dbm": ":.1f",
+        "avg_download_mbps": ":.1f",
+        "connected_devices": True,
+        "latitude": False,
+        "longitude": False,
+    },
+
+    zoom=11,
+
+    height=480,
+)
 
 
-map_data = df.copy()
+map_fig.update_layout(
 
-if selected_network != "All Networks":
-    map_data = map_data[
-        map_data["network_name"] == selected_network
-    ]
+    map_style="carto-darkmatter",
 
-if selected_cluster != "All Clusters":
-    map_data = map_data[
-        pd.to_numeric(
-            map_data["cluster"],
-            errors="coerce",
-        ) == int(selected_cluster)
-    ]
+    margin=dict(
+        l=0,
+        r=0,
+        t=0,
+        b=0,
+    ),
 
+    paper_bgcolor="#070707",
 
-if map_data.empty:
+    plot_bgcolor="#070707",
 
-    st.warning(
-        "No Wi-Fi observations match the selected map filters."
-    )
+    font=dict(
+        family="Courier New",
+        color="#ffffff",
+    ),
 
-else:
-
-    # Center the map on the actual WiSense observations instead of
-    # allowing Plotly to fall back to a world-scale view.
-    map_center_lat = float(map_data["latitude"].mean())
-    map_center_lon = float(map_data["longitude"].mean())
-
-    map_fig = px.scatter_map(
-        map_data,
-
-        lat="latitude",
-
-        lon="longitude",
-
-        color="network_name",
-
-        hover_name="network_name",
-
-        hover_data={
-            "rssi_dbm": ":.1f",
-            "avg_download_mbps": ":.1f",
-            "connected_devices": True,
-            "frequency_mhz": True,
-            "cluster": True,
-            "latitude": ":.5f",
-            "longitude": ":.5f",
-        },
-
-        zoom=15,
-
-        center={
-            "lat": map_center_lat,
-            "lon": map_center_lon,
-        },
-
-        height=560,
-    )
-
-
-    map_fig.update_traces(
-        marker=dict(
-            size=8,
-            opacity=0.85,
-        )
-    )
-
-
-    map_fig.update_layout(
-
-        map_style="carto-darkmatter",
-
-        margin=dict(
-            l=0,
-            r=0,
-            t=0,
-            b=0,
-        ),
-
-        paper_bgcolor="#070707",
-
-        plot_bgcolor="#070707",
-
+    legend=dict(
         font=dict(
             family="Courier New",
+            size=13,
             color="#ffffff",
         ),
 
-        legend=dict(
-
-            title=dict(
-                text="NETWORK",
-                font=dict(
-                    family="Courier New",
-                    size=13,
-                    color="#ffffff",
-                ),
-            ),
-
+        title=dict(
             font=dict(
                 family="Courier New",
                 size=13,
                 color="#ffffff",
-            ),
+            )
         ),
-    )
-
-
-    st.plotly_chart(
-        map_fig,
-
-        use_container_width=True,
-
-        config={
-            "displaylogo": False,
-        },
-    )
-
-
-# ============================================================
-# SPATIAL SUMMARY
-# ============================================================
-
-st.html(
-    """
-    <div class="section-title">
-        SPATIAL SUMMARY
-    </div>
-
-    <div class="section-subtitle">
-        Geographic summary of the filtered Wi-Fi environment
-    </div>
-    """
+    ),
 )
 
 
-spatial_col1, spatial_col2, spatial_col3, spatial_col4 = st.columns(4)
+st.plotly_chart(
+    map_fig,
 
+    use_container_width=True,
 
-with spatial_col1:
-    st.html(
-        f"""
-        <div class="metric-card">
-            <div class="metric-label">
-                MAP POINTS
-            </div>
-            <div class="metric-value">
-                {len(map_data):,}
-            </div>
-            <div class="metric-detail">
-                observations shown
-            </div>
-        </div>
-        """
-    )
-
-
-with spatial_col2:
-    st.html(
-        f"""
-        <div class="metric-card">
-            <div class="metric-label">
-                NETWORKS
-            </div>
-            <div class="metric-value">
-                {map_data["network_name"].nunique()}
-            </div>
-            <div class="metric-detail">
-                networks represented
-            </div>
-        </div>
-        """
-    )
-
-
-with spatial_col3:
-    filtered_mean_rssi = (
-        map_data["rssi_dbm"].mean()
-        if not map_data.empty
-        else float("nan")
-    )
-
-    st.html(
-        f"""
-        <div class="metric-card">
-            <div class="metric-label">
-                AVG SIGNAL
-            </div>
-            <div class="metric-value">
-                {filtered_mean_rssi:.1f}
-            </div>
-            <div class="metric-detail">
-                dBm
-            </div>
-        </div>
-        """
-    )
-
-
-with spatial_col4:
-    filtered_mean_speed = (
-        map_data["avg_download_mbps"].mean()
-        if not map_data.empty
-        else float("nan")
-    )
-
-    st.html(
-        f"""
-        <div class="metric-card">
-            <div class="metric-label">
-                AVG SPEED
-            </div>
-            <div class="metric-value">
-                {filtered_mean_speed:.1f}
-            </div>
-            <div class="metric-detail">
-                Mbps
-            </div>
-        </div>
-        """
-    )
+    config={
+        "displaylogo": False,
+    },
+)
 
 
 # ============================================================
@@ -2557,104 +2428,61 @@ st.html(
     </div>
 
     <div class="section-subtitle">
-        Recorded changes in download speed, signal strength and network performance
-    </div>
-    """
-)
-
-
-# ------------------------------------------------------------
-# Aggregate the raw 5-minute observations into 30-minute
-# intervals. This keeps the real data while making the trend
-# readable instead of plotting 1,000 noisy points.
-# ------------------------------------------------------------
-
-trend_source = df.copy()
-
-trend_source["trend_period"] = (
-    trend_source["timestamp"]
-    .dt.floor("30min")
-)
-
-
-trend_data = (
-    trend_source
-    .groupby("trend_period", as_index=False)
-    .agg(
-        avg_speed=(
-            "avg_download_mbps",
-            "mean",
-        ),
-        avg_rssi=(
-            "rssi_dbm",
-            "mean",
-        ),
-        avg_devices=(
-            "connected_devices",
-            "mean",
-        ),
-    )
-    .sort_values("trend_period")
-)
-
-
-# ------------------------------------------------------------
-# DOWNLOAD SPEED TREND
-# ------------------------------------------------------------
-
-st.html(
-    """
-    <div class="section-subtitle">
         Download speed over the recorded observation period
     </div>
     """
 )
 
 
-speed_trend_fig = px.line(
+trend_data = (
+
+    df.groupby(
+        "timestamp",
+        as_index=False,
+    )
+
+    .agg(
+        avg_speed=(
+            "avg_download_mbps",
+            "mean",
+        ),
+
+        avg_rssi=(
+            "rssi_dbm",
+            "mean",
+        ),
+    )
+)
+
+
+trend_fig = px.line(
+
     trend_data,
-    x="trend_period",
+
+    x="timestamp",
+
     y="avg_speed",
-    markers=True,
-    title="Average download speed over time",
+
+    title=
+        "Average download speed over time",
 )
 
 
-speed_trend_fig.update_traces(
-    line=dict(
-        color="#ffffff",
-        width=2,
-    ),
-    marker=dict(
-        color="#ffffff",
-        size=4,
-    ),
-)
+trend_fig.update_layout(
 
+    height=400,
 
-speed_trend_fig.update_layout(
-    height=390,
     paper_bgcolor="#070707",
+
     plot_bgcolor="#070707",
+
     font=dict(
         family="Courier New",
         color="#ffffff",
     ),
-    hoverlabel=dict(
-        bgcolor="#101010",
-        font=dict(
-            family="Courier New",
-            color="#ffffff",
-        ),
-    ),
-    title=dict(
-        font=dict(
-            family="Courier New",
-            size=16,
-            color="#ffffff",
-        )
-    ),
+
     xaxis=dict(
+
         title=dict(
             text="Time",
             font=dict(
@@ -2662,14 +2490,15 @@ speed_trend_fig.update_layout(
                 color="#dddddd",
             ),
         ),
+
         tickfont=dict(
             family="Courier New",
             color="#c7c7c7",
         ),
-        gridcolor="#333333",
-        zerolinecolor="#444444",
     ),
+
     yaxis=dict(
+
         title=dict(
             text="Mbps",
             font=dict(
@@ -2677,259 +2506,28 @@ speed_trend_fig.update_layout(
                 color="#dddddd",
             ),
         ),
+
         tickfont=dict(
             family="Courier New",
             color="#c7c7c7",
         ),
-        gridcolor="#333333",
-        zerolinecolor="#444444",
-    ),
-    margin=dict(
-        l=60,
-        r=25,
-        t=60,
-        b=55,
     ),
 )
 
 
 st.plotly_chart(
-    speed_trend_fig,
+
+    trend_fig,
+
     use_container_width=True,
+
     config={
         "displaylogo": False,
     },
 )
 
 
-# ------------------------------------------------------------
-# SIGNAL STRENGTH TREND
-# ------------------------------------------------------------
-
-st.html(
-    """
-    <div class="section-subtitle">
-        Average Wi-Fi signal strength over the recorded observation period
-    </div>
-    """
-)
-
-
-signal_trend_fig = px.line(
-    trend_data,
-    x="trend_period",
-    y="avg_rssi",
-    markers=True,
-    title="Average signal strength over time",
-)
-
-
-signal_trend_fig.update_traces(
-    line=dict(
-        color="#ffffff",
-        width=2,
-    ),
-    marker=dict(
-        color="#ffffff",
-        size=4,
-    ),
-)
-
-
-signal_trend_fig.update_layout(
-    height=390,
-    paper_bgcolor="#070707",
-    plot_bgcolor="#070707",
-    font=dict(
-        family="Courier New",
-        color="#ffffff",
-    ),
-    hoverlabel=dict(
-        bgcolor="#101010",
-        font=dict(
-            family="Courier New",
-            color="#ffffff",
-        ),
-    ),
-    title=dict(
-        font=dict(
-            family="Courier New",
-            size=16,
-            color="#ffffff",
-        )
-    ),
-    xaxis=dict(
-        title=dict(
-            text="Time",
-            font=dict(
-                family="Courier New",
-                color="#dddddd",
-            ),
-        ),
-        tickfont=dict(
-            family="Courier New",
-            color="#c7c7c7",
-        ),
-        gridcolor="#333333",
-        zerolinecolor="#444444",
-    ),
-    yaxis=dict(
-        title=dict(
-            text="RSSI (dBm)",
-            font=dict(
-                family="Courier New",
-                color="#dddddd",
-            ),
-        ),
-        tickfont=dict(
-            family="Courier New",
-            color="#c7c7c7",
-        ),
-        gridcolor="#333333",
-        zerolinecolor="#444444",
-    ),
-    margin=dict(
-        l=60,
-        r=25,
-        t=60,
-        b=55,
-    ),
-)
-
-
-st.plotly_chart(
-    signal_trend_fig,
-    use_container_width=True,
-    config={
-        "displaylogo": False,
-    },
-)
-
-
-# ------------------------------------------------------------
-# NETWORK PERFORMANCE
-# ------------------------------------------------------------
-
-st.html(
-    """
-    <div class="section-subtitle">
-        Average download performance across observed Wi-Fi networks
-    </div>
-    """
-)
-
-
-network_trend_data = (
-    network_summary[[
-        "network_name",
-        "avg_speed",
-    ]]
-    .sort_values(
-        "avg_speed",
-        ascending=False,
-    )
-)
-
-
-network_performance_fig = px.bar(
-    network_trend_data,
-    x="network_name",
-    y="avg_speed",
-    text="avg_speed",
-    title="Average download speed by network",
-)
-
-
-network_performance_fig.update_traces(
-    marker_color="#0088ff",
-    texttemplate="%{text:.1f} Mbps",
-    textposition="outside",
-    textfont=dict(
-        family="Courier New",
-        color="#ffffff",
-        size=12,
-    ),
-)
-
-
-network_performance_fig.update_layout(
-    height=390,
-    paper_bgcolor="#070707",
-    plot_bgcolor="#070707",
-    font=dict(
-        family="Courier New",
-        color="#ffffff",
-    ),
-    hoverlabel=dict(
-        bgcolor="#101010",
-        font=dict(
-            family="Courier New",
-            color="#ffffff",
-        ),
-    ),
-    title=dict(
-        font=dict(
-            family="Courier New",
-            size=16,
-            color="#ffffff",
-        )
-    ),
-    xaxis=dict(
-        title=dict(
-            text="Network",
-            font=dict(
-                family="Courier New",
-                color="#dddddd",
-            ),
-        ),
-        tickfont=dict(
-            family="Courier New",
-            color="#ffffff",
-        ),
-        gridcolor="#333333",
-    ),
-    yaxis=dict(
-        title=dict(
-            text="Average speed (Mbps)",
-            font=dict(
-                family="Courier New",
-                color="#dddddd",
-            ),
-        ),
-        tickfont=dict(
-            family="Courier New",
-            color="#c7c7c7",
-        ),
-        gridcolor="#333333",
-        range=[
-            0,
-            max(
-                100,
-                float(
-                    network_trend_data["avg_speed"].max()
-                    * 1.20
-                ),
-            ),
-        ],
-    ),
-    margin=dict(
-        l=60,
-        r=40,
-        t=60,
-        b=55,
-    ),
-)
-
-
-st.plotly_chart(
-    network_performance_fig,
-    use_container_width=True,
-    config={
-        "displaylogo": False,
-    },
-)
-
-
+# ============================================================
 # FOOTER
 # ============================================================
 
@@ -2938,7 +2536,7 @@ st.html(
     <div class="wisense-footer">
 
         WISENSE · WI-FI INTELLIGENCE &amp; ANALYTICS
-        · STREAMLIT INTERFACE · PHASE 8
+        · STREAMLIT INTERFACE · PHASE 6
 
     </div>
     """
