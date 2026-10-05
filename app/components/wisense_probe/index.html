@@ -1,0 +1,233 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin: 0; padding: 0; background: transparent; }
+  #status { font: 12px "Courier New", monospace; color: #9ad1ff; padding: 2px 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+</style>
+</head>
+<body>
+<div id="status">BROWSER PROBE: starting…</div>
+<script>
+/*
+ * WiSense browser probe.
+ * Runs inside the browser of whichever device opened the dashboard (phone, tablet, laptop)
+ * and measures what that device really experiences:
+ *   - latency / jitter / loss to the WiSense server  (this is the Wi-Fi hop on a LAN)
+ *   - latency to the internet and (optionally) real download throughput
+ *   - the Network Information API hints the browser exposes (connection type, etc.)
+ * Nothing here is simulated. Values the browser does not expose are sent as null.
+ */
+(function () {
+  var statusEl = document.getElementById("status");
+  function post(type, data) {
+    var msg = { isStreamlitMessage: true, type: type };
+    for (var k in (data || {})) msg[k] = data[k];
+    window.parent.postMessage(msg, "*");
+  }
+  function setStatus(text) { statusEl.textContent = "BROWSER PROBE: " + text; }
+
+  var args = { enabled: true, interval_s: 10, speed_every_s: 0, run_id: 0 };
+  var seq = 0, busy = false, timer = null, timerInterval = null;
+  var lastRunId = null, lastSpeedAt = 0;
+  var SPEED_URL = "https://speed.cloudflare.com/__down";
+  var DOWNLOAD_BYTES = 1500000;
+
+  function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+  function median(a) { if (!a.length) return null; var s = a.slice().sort(function (x, y) { return x - y; }); var m = Math.floor(s.length / 2); return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; }
+  function round(v, d) { return v == null ? null : Math.round(v * Math.pow(10, d)) / Math.pow(10, d); }
+
+  function deviceInfo() {
+    var ua = navigator.userAgent || "";
+    var label = "Unknown device";
+    if (/iPhone/i.test(ua)) label = "iPhone";
+    else if (/iPad/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1)) label = "iPad";
+    else if (/Android/i.test(ua)) label = /Mobile/i.test(ua) ? "Android phone" : "Android tablet";
+    else if (/Windows/i.test(ua)) label = "Windows computer";
+    else if (/Macintosh|Mac OS X/i.test(ua)) label = "Mac";
+    else if (/CrOS/i.test(ua)) label = "Chromebook";
+    else if (/Linux/i.test(ua)) label = "Linux computer";
+    var mobile = /iPhone|iPad|Android|Mobile/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
+    return { device: label, is_mobile: mobile };
+  }
+
+  function connectionInfo() {
+    var c = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    if (!c) return { conn_type: null, effective_type: null, downlink_hint_mbps: null, rtt_hint_ms: null, save_data: null };
+    return {
+      conn_type: c.type || null,
+      effective_type: c.effectiveType || null,
+      downlink_hint_mbps: typeof c.downlink === "number" ? c.downlink : null,
+      rtt_hint_ms: typeof c.rtt === "number" ? c.rtt : null,
+      save_data: typeof c.saveData === "boolean" ? c.saveData : null
+    };
+  }
+
+  async function timedFetch(url) {
+    var t0 = performance.now();
+    try {
+      var r = await fetch(url, { cache: "no-store" });
+      await r.arrayBuffer();
+      return performance.now() - t0;
+    } catch (e) { return null; }
+  }
+
+  async function serverLatency(n) {
+    var base = window.location.pathname.split("/component/")[0];
+    var times = [], failed = 0;
+    for (var i = 0; i < n; i++) {
+      var d = await timedFetch(base + "/_stcore/health?_=" + Date.now() + "_" + i);
+      if (d == null) failed++; else times.push(d);
+      await sleep(40);
+    }
+    var jitter = null;
+    if (times.length > 1) {
+      var sum = 0;
+      for (var j = 1; j < times.length; j++) sum += Math.abs(times[j] - times[j - 1]);
+      jitter = sum / (times.length - 1);
+    }
+    return { rtt: median(times), min: times.length ? Math.min.apply(null, times) : null, jitter: jitter, loss: (failed / n) * 100 };
+  }
+
+  async function internetLatency(n) {
+    var times = [];
+    for (var i = 0; i < n; i++) {
+      var d = await timedFetch(SPEED_URL + "?bytes=0&_=" + Date.now() + "_" + i);
+      if (d != null) times.push(d);
+      await sleep(30);
+    }
+    return times.length ? Math.min.apply(null, times) : null;
+  }
+
+  async function downloadMbps() {
+    var t0 = performance.now();
+    var r = await fetch(SPEED_URL + "?bytes=" + DOWNLOAD_BYTES + "&_=" + Date.now(), { cache: "no-store" });
+    if (!r.ok || !r.body) throw new Error("HTTP " + r.status);
+    var reader = r.body.getReader(), total = 0, firstLen = 0, tFirst = null;
+    for (;;) {
+      var chunk = await reader.read();
+      if (chunk.done) break;
+      if (tFirst === null) { tFirst = performance.now(); firstLen = chunk.value.length; }
+      total += chunk.value.length;
+    }
+    var t1 = performance.now();
+    var steady = (t1 - tFirst) / 1000;
+    var bits = (total - firstLen) * 8;
+    var mbps = (steady > 0.05 && bits > 0) ? bits / steady / 1e6 : (total * 8) / ((t1 - t0) / 1000) / 1e6;
+    return mbps;
+  }
+
+  // Throughput between THIS device and the WiSense host: with a phone this is the Wi-Fi link itself.
+  async function localMbps() {
+    var base = window.location.pathname.split("/component/")[0];
+    var urls = [];
+    try {
+      var scripts = window.parent.document.querySelectorAll("script[src]");
+      for (var i = 0; i < scripts.length; i++) {
+        var u = new URL(scripts[i].getAttribute("src"), window.parent.location.href);
+        if (u.origin === window.location.origin) urls.push(u.href);
+      }
+    } catch (e) { /* parent not readable */ }
+    if (!urls.length) throw new Error("no local file to download");
+    var bytes = 0, t0 = performance.now();
+    for (var j = 0; j < urls.length && j < 4 && bytes < 3000000; j++) {
+      var url = urls[j] + (urls[j].indexOf("?") < 0 ? "?" : "&") + "_wisense=" + Date.now() + j;
+      var r = await fetch(url, { cache: "no-store" });
+      var buf = await r.arrayBuffer();
+      var entry = (performance.getEntriesByName ? performance.getEntriesByName(url).pop() : null);
+      bytes += (entry && entry.encodedBodySize) ? entry.encodedBodySize : buf.byteLength;
+    }
+    var seconds = (performance.now() - t0) / 1000;
+    if (bytes < 200000 || seconds <= 0) throw new Error("local file too small to time");
+    return (bytes * 8) / seconds / 1e6;
+  }
+
+  var pendingSpeedRun = null;
+
+  async function measure(withSpeed, runId) {
+    if (busy) { if (withSpeed) pendingSpeedRun = runId; return; }
+    busy = true;
+    setStatus("measuring…");
+    var out = { seq: ++seq, client_time_ms: Date.now(), online: navigator.onLine };
+    var k;
+    var di = deviceInfo(), ci = connectionInfo();
+    for (k in di) out[k] = di[k];
+    for (k in ci) out[k] = ci[k];
+    try {
+      var lan = await serverLatency(8);
+      out.server_rtt_ms = round(lan.rtt, 1);
+      out.server_rtt_min_ms = round(lan.min, 1);
+      out.server_jitter_ms = round(lan.jitter, 1);
+      out.server_loss_pct = round(lan.loss, 1);
+    } catch (e) { out.server_error = String(e); }
+
+    out.internet_rtt_ms = null; out.download_mbps = null; out.local_mbps = null; out.speed_error = null;
+    out.speed_run_id = withSpeed ? (runId || 0) : null;
+    try {
+      out.internet_rtt_ms = round(await internetLatency(3), 1);
+    } catch (e) { /* internet latency optional */ }
+    if (withSpeed) {
+      setStatus("speed test running…");
+      var errors = [];
+      try { out.local_mbps = round(await localMbps(), 1); } catch (e) { errors.push("Wi-Fi link test: " + (e && e.message ? e.message : e)); }
+      if (ci.save_data !== true) {
+        try { out.download_mbps = round(await downloadMbps(), 2); }
+        catch (e) { errors.push("internet download blocked or failed (" + (e && e.message ? e.message : e) + ")"); }
+      }
+      out.speed_error = errors.length ? errors.join("; ") : null;
+      lastSpeedAt = Date.now();
+    }
+
+    busy = false;
+    var parts = [out.device];
+    if (out.server_rtt_ms != null) parts.push("server " + out.server_rtt_ms + " ms");
+    if (out.internet_rtt_ms != null) parts.push("internet " + out.internet_rtt_ms + " ms");
+    if (out.local_mbps != null) parts.push("Wi-Fi link " + out.local_mbps + " Mbps");
+    if (out.download_mbps != null) parts.push("internet " + out.download_mbps + " Mbps");
+    setStatus(parts.join(" · "));
+    post("streamlit:setComponentValue", { value: out, dataType: "json" });
+    if (pendingSpeedRun !== null) { var next = pendingSpeedRun; pendingSpeedRun = null; setTimeout(function () { measure(true, next); }, 50); }
+  }
+
+  function tick() {
+    var speedDue = args.speed_every_s > 0 && (Date.now() - lastSpeedAt) / 1000 >= args.speed_every_s;
+    measure(speedDue, args.run_id);
+  }
+
+  function schedule() {
+    if (!args.enabled) {
+      if (timer) { clearInterval(timer); timer = null; timerInterval = null; }
+      setStatus("paused");
+      return;
+    }
+    var every = Math.max(3, Number(args.interval_s) || 10);
+    if (!timer || timerInterval !== every) {
+      if (timer) clearInterval(timer);
+      timerInterval = every;
+      timer = setInterval(tick, every * 1000);
+      if (lastRunId === null) { measure(false, args.run_id); }
+    }
+    if (lastRunId !== null && args.run_id !== lastRunId) { measure(true, args.run_id); }
+    lastRunId = args.run_id;
+  }
+
+  window.addEventListener("message", function (event) {
+    var data = event.data;
+    if (!data || data.type !== "streamlit:render") return;
+    var a = data.args || {};
+    args = {
+      enabled: a.enabled !== false,
+      interval_s: a.interval_s || 10,
+      speed_every_s: a.speed_every_s || 0,
+      run_id: a.run_id || 0
+    };
+    schedule();
+  });
+
+  post("streamlit:componentReady", { apiVersion: 1 });
+  post("streamlit:setFrameHeight", { height: 24 });
+})();
+</script>
+</body>
+</html>

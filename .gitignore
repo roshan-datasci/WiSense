@@ -1,34 +1,5 @@
-# Python
 __pycache__/
-*.py[cod]
-
-# Virtual environments
+*.pyc
+node_modules/
+data/live_wifi_history.csv
 .venv/
-venv/
-env/
-
-# Environment variables / secrets
-.env
-.streamlit/secrets.toml
-
-# Streamlit
-.streamlit/cache/
-
-# Jupyter
-.ipynb_checkpoints/
-
-# OS
-.DS_Store
-Thumbs.db
-
-# IDE
-.vscode/
-
-# Test / coverage
-.pytest_cache/
-.coverage
-htmlcov/
-
-# Temporary files
-*.tmp
-*.log

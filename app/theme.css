@@ -1,0 +1,949 @@
+
+
+    /* ========================================================
+       GLOBAL PAGE
+    ======================================================== */
+
+    :root {
+        --bg: #050505;
+        --panel: #090909;
+        --panel-2: #0d0d0d;
+
+        --border: #363636;
+        --border-soft: #252525;
+
+        --text: #ffffff;
+        --text-secondary: #c2c2c2;
+        --text-dim: #d0d0d0;
+        --text-faint: #b8b8b8;
+    }
+
+
+    html,
+    body {
+        background: #050505 !important;
+        color: #ffffff !important;
+    }
+
+
+    body {
+        font-family: "Courier New", monospace !important;
+    }
+
+
+    [data-testid="stAppViewContainer"] {
+
+        background-color: #050505 !important;
+
+        /* Clearly visible scientific dot grid */
+        background-image:
+            radial-gradient(
+                rgba(255, 255, 255, 0.32) 1px,
+                transparent 1px
+            ) !important;
+
+        background-size: 22px 22px !important;
+
+        background-position: 0 0 !important;
+    }
+
+
+    [data-testid="stAppViewContainer"] > .main {
+        background: transparent !important;
+    }
+
+
+    [data-testid="stHeader"] {
+        background: transparent !important;
+    }
+
+
+    [data-testid="stToolbar"] {
+        display: none !important;
+    }
+
+
+    #MainMenu {
+        visibility: hidden !important;
+    }
+
+
+    footer {
+        visibility: hidden !important;
+    }
+
+
+    .block-container {
+
+        max-width: 1500px;
+
+        padding-top: 1.5rem;
+        padding-bottom: 3rem;
+
+        background: transparent !important;
+    }
+
+
+    /* ========================================================
+       TERMINAL HEADER
+    ======================================================== */
+
+    .wisense-header {
+
+        text-align: center;
+
+        padding: 1.4rem 1rem 1.6rem 1rem;
+
+        margin-bottom: 1.2rem;
+
+        border-top: 1px solid #454545;
+        border-bottom: 1px solid #454545;
+
+        background: rgba(5, 5, 5, 0.82);
+    }
+
+
+    .terminal-line {
+
+        color: #ffffff;
+
+        font-family:
+            "Courier New",
+            monospace;
+
+        font-size:
+            clamp(
+                0.75rem,
+                2vw,
+                1.1rem
+            );
+
+        font-weight: 700;
+
+        letter-spacing: 0.10em;
+
+        line-height: 1.1;
+
+        white-space: nowrap;
+    }
+
+
+    .terminal-name {
+
+        margin: 0.25rem 0;
+
+        color: #ffffff;
+
+        font-family:
+            "Courier New",
+            monospace;
+
+        font-size:
+            clamp(
+                1.8rem,
+                4vw,
+                3.3rem
+            );
+
+        font-weight: 700;
+
+        letter-spacing: 0.18em;
+
+        line-height: 1.05;
+    }
+
+
+    .wisense-subtitle {
+
+        margin-top: 0.8rem;
+
+        color: #c4c4c4;
+
+        font-family:
+            "Courier New",
+            monospace;
+
+        font-size:
+            clamp(
+                0.68rem,
+                1.4vw,
+                0.95rem
+            );
+
+        letter-spacing: 0.20em;
+
+        line-height: 1.5;
+    }
+
+
+    /* ========================================================
+       NAVIGATION
+    ======================================================== */
+
+    .nav-row {
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        gap: 2rem;
+
+        flex-wrap: wrap;
+
+        margin:
+            0.8rem
+            0
+            1.4rem
+            0;
+
+        padding:
+            0.8rem
+            0;
+
+        border-bottom:
+            1px solid
+            #303030;
+
+        background:
+            rgba(5, 5, 5, 0.65);
+    }
+
+
+    .nav-item {
+
+        color: #dddddd;
+
+        font-family:
+            "Courier New",
+            monospace;
+
+        font-size: 0.78rem;
+
+        font-weight: 600;
+
+        letter-spacing: 0.12em;
+
+        white-space: nowrap;
+    }
+
+
+    .nav-item.active {
+        color: #ffffff;
+    }
+
+
+    /* ========================================================
+       LIVE
+    ======================================================== */
+
+    .live-row {
+
+        display: flex;
+
+        justify-content: flex-end;
+
+        align-items: center;
+
+        margin:
+            0.4rem
+            0
+            1.2rem
+            0;
+    }
+
+
+    .live-indicator {
+
+        color: #eeeeee;
+
+        font-family:
+            "Courier New",
+            monospace;
+
+        font-size: 0.75rem;
+
+        font-weight: 600;
+
+        letter-spacing: 0.12em;
+    }
+
+
+    .live-dot {
+        color: #ffffff;
+    }
+
+
+    /* ========================================================
+       SECTION HEADINGS
+    ======================================================== */
+
+    .section-title {
+
+        color: #ffffff;
+
+        font-family:
+            "Courier New",
+            monospace;
+
+        font-size: 0.94rem;
+
+        font-weight: 700;
+
+        letter-spacing: 0.13em;
+
+        margin:
+            1.6rem
+            0
+            0.65rem
+            0;
+
+        padding-bottom: 0.55rem;
+
+        border-bottom:
+            1px solid
+            #3a3a3a;
+
+        background:
+            rgba(5, 5, 5, 0.62);
+    }
+
+
+    .section-subtitle {
+
+        color: #d6d6d6;
+
+        font-family:
+            "Courier New",
+            monospace;
+
+        font-size: 0.74rem;
+
+        font-weight: 500;
+
+        letter-spacing: 0.04em;
+
+        line-height: 1.6;
+
+        margin-bottom: 0.8rem;
+
+        background:
+            rgba(5, 5, 5, 0.52);
+    }
+
+
+    /* ========================================================
+       METRIC CARDS
+    ======================================================== */
+
+    .metric-card {
+
+        background:
+            rgba(9, 9, 9, 0.92);
+
+        border:
+            1px solid
+            #3a3a3a;
+
+        padding: 1rem;
+
+        min-height: 115px;
+    }
+
+
+    .metric-label {
+
+        color: #d6d6d6;
+
+        font-family:
+            "Courier New",
+            monospace;
+
+        font-size: 0.68rem;
+
+        font-weight: 600;
+
+        letter-spacing: 0.08em;
+
+        margin-bottom: 0.7rem;
+    }
+
+
+    .metric-value {
+
+        color: #ffffff;
+
+        font-family:
+            "Courier New",
+            monospace;
+
+        font-size: 1.65rem;
+
+        font-weight: 700;
+    }
+
+
+    .metric-detail {
+
+        color: #bdbdbd;
+
+        font-family:
+            "Courier New",
+            monospace;
+
+        font-size: 0.67rem;
+
+        line-height: 1.5;
+
+        margin-top: 0.45rem;
+    }
+
+
+    /* ========================================================
+       LIVE CONTROLS — HIGH CONTRAST
+    ======================================================== */
+
+    div[data-testid="stButton"] button {
+        background: #ffffff !important;
+        color: #000000 !important;
+        border: 1px solid #ffffff !important;
+        min-height: 44px !important;
+    }
+
+    div[data-testid="stButton"] button p,
+    div[data-testid="stButton"] button span,
+    div[data-testid="stButton"] button div,
+    div[data-testid="stButton"] button p {
+        color: #000000 !important;
+        font-family: "Courier New", monospace !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.06em !important;
+        opacity: 1 !important;
+    }
+
+    div[data-testid="stButton"] button[disabled],
+    div[data-testid="stButton"] button[disabled] * {
+        color: #000000 !important;
+        opacity: 1 !important;
+    }
+
+    div[data-testid="stCheckbox"] label,
+    div[data-testid="stCheckbox"] label p,
+    div[data-testid="stCheckbox"] label span {
+        color: #ffffff !important;
+        font-family: "Courier New", monospace !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.06em !important;
+    }
+
+    div[data-testid="stCaptionContainer"],
+    div[data-testid="stCaptionContainer"] p {
+        color: #d8d8d8 !important;
+    }
+
+    /* ========================================================
+       STREAMLIT TEXT VISIBILITY
+    ======================================================== */
+
+    [data-testid="stAlert"],
+    [data-testid="stAlert"] p,
+    [data-testid="stAlert"] span,
+    [data-testid="stAlert"] div {
+        color: #ffffff !important;
+    }
+
+    [data-testid="stAlert"] {
+        background-color: rgba(10, 20, 30, 0.88) !important;
+        border-color: #334a60 !important;
+    }
+
+    [data-testid="stDataFrame"] {
+        color: #ffffff !important;
+    }
+
+
+    /* ========================================================
+       SELECTBOX
+    ======================================================== */
+
+    div[data-baseweb="select"] > div {
+
+        background-color:
+            #0b0b0b !important;
+
+        border-color:
+            #4a4a4a !important;
+
+        color:
+            #ffffff !important;
+    }
+
+
+    div[data-baseweb="select"] span {
+        color: #ffffff !important;
+    }
+
+
+    label {
+
+        color:
+            #bcbcbc !important;
+
+        font-family:
+            "Courier New",
+            monospace !important;
+
+        font-size:
+            0.72rem !important;
+
+        font-weight:
+            500 !important;
+
+        letter-spacing:
+            0.08em !important;
+    }
+
+
+    /* ========================================================
+       PLOTLY — GLOBAL VISIBILITY FIX
+    ======================================================== */
+
+    .js-plotly-plot {
+
+        background:
+            #070707 !important;
+    }
+
+
+    .js-plotly-plot .plotly {
+
+        background:
+            #070707 !important;
+    }
+
+
+    /* Legend text */
+    .js-plotly-plot
+    .plotly
+    .legendtext {
+
+        fill: #ffffff !important;
+
+        color: #ffffff !important;
+
+        font-family:
+            "Courier New",
+            monospace !important;
+
+        font-size:
+            13px !important;
+    }
+
+
+    /* Plotly category/tick labels */
+    .js-plotly-plot .plotly .xtick text,
+    .js-plotly-plot .plotly .ytick text,
+    .js-plotly-plot .plotly .axis-title {
+        fill: #ffffff !important;
+        color: #ffffff !important;
+        opacity: 1 !important;
+    }
+
+    /* Legend title */
+    .js-plotly-plot
+    .plotly
+    .legendtitletext {
+
+        fill: #ffffff !important;
+
+        color: #ffffff !important;
+
+        font-family:
+            "Courier New",
+            monospace !important;
+    }
+
+
+    /* X axis labels */
+    .js-plotly-plot
+    .plotly
+    .xtick
+    text {
+
+        fill: #c7c7c7 !important;
+
+        color: #c7c7c7 !important;
+
+        font-family:
+            "Courier New",
+            monospace !important;
+    }
+
+
+    /* Y axis labels */
+    .js-plotly-plot
+    .plotly
+    .ytick
+    text {
+
+        fill: #c7c7c7 !important;
+
+        color: #c7c7c7 !important;
+
+        font-family:
+            "Courier New",
+            monospace !important;
+    }
+
+
+    /* Chart titles */
+    .js-plotly-plot
+    .plotly
+    .gtitle {
+
+        fill: #ffffff !important;
+
+        color: #ffffff !important;
+
+        font-family:
+            "Courier New",
+            monospace !important;
+
+        font-weight: 700 !important;
+    }
+
+
+    /* Axis titles */
+    .js-plotly-plot
+    .plotly
+    .axis-title {
+
+        fill: #dddddd !important;
+
+        color: #dddddd !important;
+
+        font-family:
+            "Courier New",
+            monospace !important;
+    }
+
+
+    /* Plotly modebar */
+    .js-plotly-plot
+    .plotly
+    .modebar-btn {
+
+        color: #aaaaaa !important;
+    }
+
+
+    /* ========================================================
+       CUSTOM TABLE
+    ======================================================== */
+
+    .ml-table-wrapper {
+
+        width: 100%;
+
+        overflow-x: auto;
+
+        border:
+            1px solid
+            #363636;
+
+        background:
+            rgba(8, 8, 8, 0.94);
+    }
+
+
+    .ml-table {
+
+        width: 100%;
+
+        border-collapse:
+            collapse;
+
+        font-family:
+            "Courier New",
+            monospace;
+
+        font-size:
+            0.70rem;
+
+        color:
+            #dddddd;
+    }
+
+
+    .ml-table th {
+
+        color:
+            #ffffff;
+
+        background:
+            #101010;
+
+        font-weight:
+            700;
+
+        letter-spacing:
+            0.05em;
+
+        text-align:
+            left;
+
+        padding:
+            0.65rem;
+
+        border-bottom:
+            1px solid
+            #454545;
+    }
+
+
+    .ml-table td {
+
+        color:
+            #c2c2c2;
+
+        padding:
+            0.65rem;
+
+        border-bottom:
+            1px solid
+            #292929;
+    }
+
+
+    .ml-table tr:last-child td {
+        border-bottom: none;
+    }
+
+
+    /* ========================================================
+       FOOTER
+    ======================================================== */
+
+    .wisense-footer {
+
+        margin-top: 2rem;
+
+        padding-top: 1rem;
+
+        border-top:
+            1px solid
+            #2d2d2d;
+
+        color:
+            #888888;
+
+        font-family:
+            "Courier New",
+            monospace;
+
+        font-size:
+            0.65rem;
+
+        letter-spacing:
+            0.06em;
+
+        text-align:
+            center;
+    }
+
+
+    /* ========================================================
+       REAL-TIME WI-FI ANALYSIS
+    ======================================================== */
+
+    .live-panel {
+        border: 1px solid #454545;
+        background: rgba(7, 7, 7, 0.94);
+        padding: 0.85rem;
+        margin-bottom: 1rem;
+    }
+
+    .live-panel-title {
+        color: #ffffff;
+        font-family: "Courier New", monospace;
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.10em;
+        margin-bottom: 0.35rem;
+    }
+
+    .live-panel-detail {
+        color: #d2d2d2;
+        font-family: "Courier New", monospace;
+        font-size: 0.68rem;
+        line-height: 1.55;
+    }
+
+    .live-badge {
+        color: #ffffff;
+        border: 1px solid #6a6a6a;
+        padding: 0.2rem 0.45rem;
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+    }
+
+    /* ========================================================
+       MOBILE
+    ======================================================== */
+
+    @media (max-width: 768px) {
+
+        .block-container {
+
+            padding-left:
+                0.8rem;
+
+            padding-right:
+                0.8rem;
+        }
+
+
+        .nav-row {
+
+            gap:
+                0.75rem;
+
+            justify-content:
+                space-between;
+        }
+
+
+        .nav-item {
+
+            font-size:
+                0.65rem;
+        }
+
+
+        .terminal-line {
+
+            font-size:
+                0.68rem;
+        }
+
+
+        .terminal-name {
+
+            font-size:
+                1.7rem;
+
+            letter-spacing:
+                0.10em;
+        }
+
+
+        .wisense-subtitle {
+
+            font-size:
+                0.65rem;
+
+            letter-spacing:
+                0.10em;
+        }
+
+
+        .section-title {
+
+            font-size:
+                0.82rem;
+        }
+
+
+        .section-subtitle {
+
+            font-size:
+                0.68rem;
+        }
+    }
+
+    
+
+    
+    /* ========================================================
+       EXPANDER FIX — stops the icon NAME (e.g. "arrow_right")
+       printing on top of the SSID label.
+       The chevron is an icon-font ligature; when that font is
+       overridden/not loaded its text shows. We hide that span
+       and draw a plain-text marker instead.
+    ======================================================== */
+
+    [data-testid="stExpander"] summary [data-testid="stIconMaterial"],
+    [data-testid="stExpander"] summary svg {
+        display: none !important;
+    }
+
+    [data-testid="stExpander"] summary {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.6rem !important;
+        min-height: 44px !important;
+        color: #ffffff !important;
+    }
+
+    [data-testid="stExpander"] summary::before {
+        content: "\25B8";
+        color: #ffffff;
+        font-family: "Courier New", monospace;
+        flex: 0 0 auto;
+    }
+
+    [data-testid="stExpander"] details[open] > summary::before {
+        content: "\25BE";
+    }
+
+    [data-testid="stExpander"] summary p {
+        font-family: "Courier New", monospace !important;
+        font-size: 0.82rem !important;
+        font-weight: 600 !important;
+        color: #ffffff !important;
+        margin: 0 !important;
+        white-space: normal !important;
+        overflow-wrap: anywhere !important;
+    }
+
+    .callout {
+        border-left: 3px solid #4da3ff;
+        background: rgba(10, 20, 32, 0.9);
+        padding: 0.7rem 0.95rem;
+        margin: 0.4rem 0 1rem 0;
+        font-family: "Courier New", monospace;
+        font-size: 0.78rem;
+        line-height: 1.55;
+        color: #e6e6e6;
+    }
+
+    .callout.warn { border-left-color: #ffb454; }
+
+    /* ========================================================
+       NAV LINKS — same look as before, now real anchors
+    ======================================================== */
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    a.nav-item,
+    a.nav-item:visited {
+        color: #dddddd;
+        text-decoration: none !important;
+        cursor: pointer;
+    }
+
+    a.nav-item:hover {
+        color: #ffffff;
+        text-decoration: none !important;
+    }
+
+    a.nav-item.active {
+        color: #ffffff;
+    }
+
+    .section-title[id] {
+        scroll-margin-top: 1.5rem;
+    }

@@ -1,0 +1,321 @@
+timestamp,ssid,bssid,ap_id,authentication,encryption,signal_percent,rssi_dbm,radio_type,band,channel,frequency_mhz,source
+2026-01-01 10:00:00,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,87.0,-56.5,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:00:00,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,61.0,-69.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:00,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,50.0,-75.0,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:00:00,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,38.0,-81.0,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:00:00,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,49.0,-75.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:00,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,74.0,-63.0,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:00:00,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,61.0,-69.5,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:00:00,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,30.0,-85.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:05,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,86.0,-57.0,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:00:05,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,57.0,-71.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:05,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,48.0,-76.0,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:00:05,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,38.0,-81.0,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:00:05,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,45.0,-77.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:05,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,72.0,-64.0,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:00:05,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,62.0,-69.0,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:00:05,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,30.0,-85.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:10,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,84.0,-58.0,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:00:10,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,58.0,-71.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:10,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,51.0,-74.5,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:00:10,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,35.0,-82.5,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:00:10,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,47.0,-76.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:10,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,74.0,-63.0,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:00:10,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,61.0,-69.5,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:00:10,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,28.0,-86.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:15,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,88.0,-56.0,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:00:15,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,57.0,-71.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:15,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,48.0,-76.0,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:00:15,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,32.0,-84.0,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:00:15,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,50.0,-75.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:15,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,74.0,-63.0,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:00:15,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,63.0,-68.5,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:00:15,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,30.0,-85.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:20,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,88.0,-56.0,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:00:20,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,60.0,-70.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:20,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,47.0,-76.5,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:00:20,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,32.0,-84.0,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:00:20,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,52.0,-74.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:20,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,75.0,-62.5,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:00:20,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,65.0,-67.5,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:00:20,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,30.0,-85.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:25,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,89.0,-55.5,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:00:25,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,57.0,-71.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:25,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,45.0,-77.5,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:00:25,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,31.0,-84.5,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:00:25,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,49.0,-75.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:25,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,73.0,-63.5,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:00:25,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,63.0,-68.5,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:00:25,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,29.0,-85.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:30,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,90.0,-55.0,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:00:30,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,56.0,-72.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:30,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,44.0,-78.0,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:00:30,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,29.0,-85.5,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:00:30,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,48.0,-76.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:30,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,76.0,-62.0,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:00:30,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,64.0,-68.0,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:00:30,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,29.0,-85.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:35,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,88.0,-56.0,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:00:35,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,58.0,-71.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:35,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,42.0,-79.0,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:00:35,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,28.0,-86.0,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:00:35,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,51.0,-74.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:35,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,77.0,-61.5,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:00:35,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,64.0,-68.0,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:00:35,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,31.0,-84.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:40,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,90.0,-55.0,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:00:40,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,60.0,-70.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:40,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,40.0,-80.0,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:00:40,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,25.0,-87.5,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:00:40,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,50.0,-75.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:40,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,76.0,-62.0,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:00:40,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,62.0,-69.0,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:00:40,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,34.0,-83.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:45,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,93.0,-53.5,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:00:45,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,58.0,-71.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:45,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,41.0,-79.5,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:00:45,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,24.0,-88.0,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:00:45,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,53.0,-73.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:45,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,75.0,-62.5,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:00:45,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,60.0,-70.0,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:00:45,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,32.0,-84.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:50,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,93.0,-53.5,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:00:50,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,57.0,-71.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:50,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,42.0,-79.0,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:00:50,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,27.0,-86.5,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:00:50,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,52.0,-74.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:50,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,73.0,-63.5,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:00:50,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,64.0,-68.0,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:00:50,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,32.0,-84.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:55,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,91.0,-54.5,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:00:55,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,53.0,-73.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:55,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,39.0,-80.5,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:00:55,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,28.0,-86.0,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:00:55,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,54.0,-73.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:00:55,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,73.0,-63.5,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:00:55,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,61.0,-69.5,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:00:55,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,31.0,-84.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:00,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,94.0,-53.0,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:01:00,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,54.0,-73.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:00,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,42.0,-79.0,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:01:00,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,30.0,-85.0,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:01:00,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,51.0,-74.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:00,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,74.0,-63.0,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:01:00,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,62.0,-69.0,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:01:00,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,31.0,-84.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:05,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,92.0,-54.0,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:01:05,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,55.0,-72.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:05,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,39.0,-80.5,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:01:05,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,30.0,-85.0,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:01:05,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,50.0,-75.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:05,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,78.0,-61.0,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:01:05,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,65.0,-67.5,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:01:05,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,30.0,-85.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:10,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,92.0,-54.0,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:01:10,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,52.0,-74.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:10,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,42.0,-79.0,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:01:10,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,32.0,-84.0,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:01:10,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,49.0,-75.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:10,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,79.0,-60.5,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:01:10,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,65.0,-67.5,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:01:10,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,27.0,-86.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:15,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,94.0,-53.0,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:01:15,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,53.0,-73.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:15,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,44.0,-78.0,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:01:15,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,32.0,-84.0,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:01:15,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,45.0,-77.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:15,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,77.0,-61.5,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:01:15,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,62.0,-69.0,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:01:15,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,30.0,-85.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:20,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,97.0,-51.5,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:01:20,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,55.0,-72.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:20,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,43.0,-78.5,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:01:20,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,29.0,-85.5,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:01:20,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,48.0,-76.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:20,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,80.0,-60.0,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:01:20,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,59.0,-70.5,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:01:20,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,30.0,-85.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:25,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,94.0,-53.0,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:01:25,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,57.0,-71.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:25,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,45.0,-77.5,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:01:25,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,27.0,-86.5,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:01:25,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,48.0,-76.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:25,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,81.0,-59.5,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:01:25,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,58.0,-71.0,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:01:25,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,33.0,-83.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:30,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,93.0,-53.5,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:01:30,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,55.0,-72.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:30,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,45.0,-77.5,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:01:30,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,28.0,-86.0,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:01:30,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,46.0,-77.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:30,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,79.0,-60.5,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:01:30,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,61.0,-69.5,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:01:30,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,34.0,-83.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:35,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,93.0,-53.5,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:01:35,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,55.0,-72.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:35,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,42.0,-79.0,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:01:35,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,26.0,-87.0,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:01:35,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,45.0,-77.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:35,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,80.0,-60.0,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:01:35,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,59.0,-70.5,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:01:35,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,32.0,-84.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:40,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,90.0,-55.0,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:01:40,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,56.0,-72.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:40,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,40.0,-80.0,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:01:40,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,29.0,-85.5,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:01:40,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,47.0,-76.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:40,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,77.0,-61.5,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:01:40,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,57.0,-71.5,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:01:40,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,33.0,-83.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:45,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,88.0,-56.0,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:01:45,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,53.0,-73.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:45,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,44.0,-78.0,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:01:45,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,30.0,-85.0,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:01:45,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,47.0,-76.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:45,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,79.0,-60.5,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:01:45,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,59.0,-70.5,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:01:45,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,31.0,-84.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:50,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,85.0,-57.5,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:01:50,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,53.0,-73.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:50,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,43.0,-78.5,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:01:50,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,29.0,-85.5,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:01:50,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,49.0,-75.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:50,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,80.0,-60.0,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:01:50,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,63.0,-68.5,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:01:50,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,28.0,-86.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:55,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,84.0,-58.0,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:01:55,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,52.0,-74.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:55,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,46.0,-77.0,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:01:55,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,28.0,-86.0,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:01:55,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,46.0,-77.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:01:55,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,80.0,-60.0,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:01:55,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,62.0,-69.0,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:01:55,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,27.0,-86.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:00,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,83.0,-58.5,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:02:00,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,55.0,-72.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:00,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,45.0,-77.5,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:02:00,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,30.0,-85.0,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:02:00,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,47.0,-76.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:00,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,77.0,-61.5,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:02:00,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,66.0,-67.0,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:02:00,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,29.0,-85.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:05,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,86.0,-57.0,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:02:05,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,58.0,-71.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:05,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,48.0,-76.0,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:02:05,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,28.0,-86.0,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:02:05,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,47.0,-76.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:05,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,75.0,-62.5,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:02:05,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,65.0,-67.5,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:02:05,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,26.0,-87.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:10,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,85.0,-57.5,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:02:10,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,61.0,-69.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:10,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,46.0,-77.0,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:02:10,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,30.0,-85.0,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:02:10,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,46.0,-77.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:10,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,74.0,-63.0,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:02:10,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,68.0,-66.0,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:02:10,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,29.0,-85.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:15,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,86.0,-57.0,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:02:15,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,63.0,-68.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:15,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,43.0,-78.5,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:02:15,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,28.0,-86.0,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:02:15,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,50.0,-75.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:15,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,75.0,-62.5,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:02:15,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,69.0,-65.5,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:02:15,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,31.0,-84.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:20,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,82.0,-59.0,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:02:20,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,63.0,-68.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:20,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,44.0,-78.0,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:02:20,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,31.0,-84.5,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:02:20,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,47.0,-76.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:20,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,78.0,-61.0,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:02:20,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,66.0,-67.0,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:02:20,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,29.0,-85.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:25,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,83.0,-58.5,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:02:25,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,64.0,-68.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:25,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,42.0,-79.0,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:02:25,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,28.0,-86.0,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:02:25,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,50.0,-75.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:25,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,76.0,-62.0,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:02:25,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,66.0,-67.0,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:02:25,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,30.0,-85.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:30,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,83.0,-58.5,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:02:30,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,65.0,-67.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:30,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,42.0,-79.0,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:02:30,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,31.0,-84.5,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:02:30,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,48.0,-76.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:30,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,78.0,-61.0,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:02:30,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,64.0,-68.0,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:02:30,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,29.0,-85.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:35,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,84.0,-58.0,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:02:35,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,64.0,-68.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:35,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,41.0,-79.5,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:02:35,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,33.0,-83.5,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:02:35,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,45.0,-77.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:35,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,77.0,-61.5,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:02:35,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,68.0,-66.0,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:02:35,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,33.0,-83.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:40,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,81.0,-59.5,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:02:40,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,62.0,-69.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:40,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,39.0,-80.5,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:02:40,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,36.0,-82.0,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:02:40,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,48.0,-76.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:40,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,80.0,-60.0,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:02:40,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,67.0,-66.5,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:02:40,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,30.0,-85.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:45,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,83.0,-58.5,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:02:45,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,63.0,-68.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:45,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,40.0,-80.0,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:02:45,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,40.0,-80.0,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:02:45,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,49.0,-75.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:45,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,77.0,-61.5,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:02:45,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,69.0,-65.5,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:02:45,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,29.0,-85.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:50,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,84.0,-58.0,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:02:50,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,66.0,-67.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:50,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,37.0,-81.5,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:02:50,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,37.0,-81.5,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:02:50,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,46.0,-77.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:50,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,77.0,-61.5,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:02:50,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,68.0,-66.0,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:02:50,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,29.0,-85.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:55,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,86.0,-57.0,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:02:55,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,64.0,-68.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:55,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,38.0,-81.0,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:02:55,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,35.0,-82.5,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:02:55,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,46.0,-77.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:02:55,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,80.0,-60.0,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:02:55,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,70.0,-65.0,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:02:55,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,27.0,-86.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:03:00,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,85.0,-57.5,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:03:00,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,62.0,-69.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:03:00,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,35.0,-82.5,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:03:00,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,37.0,-81.5,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:03:00,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,47.0,-76.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:03:00,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,78.0,-61.0,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:03:00,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,72.0,-64.0,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:03:00,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,27.0,-86.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:03:05,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,85.0,-57.5,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:03:05,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,59.0,-70.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:03:05,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,32.0,-84.0,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:03:05,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,40.0,-80.0,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:03:05,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,50.0,-75.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:03:05,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,79.0,-60.5,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:03:05,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,74.0,-63.0,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:03:05,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,28.0,-86.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:03:10,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,82.0,-59.0,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:03:10,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,56.0,-72.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:03:10,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,30.0,-85.0,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:03:10,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,43.0,-78.5,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:03:10,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,52.0,-74.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:03:10,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,81.0,-59.5,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:03:10,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,77.0,-61.5,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:03:10,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,25.0,-87.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:03:15,Demo-Campus-WiFi,02:00:00:00:00:01,02:00:00:00:00:01,WPA2-Enterprise,CCMP,80.0,-60.0,802.11ac,5 GHz,44,5220.0,sample-synthetic
+2026-01-01 10:03:15,Demo-Campus-WiFi,02:00:00:00:00:02,02:00:00:00:00:02,WPA2-Enterprise,CCMP,54.0,-73.0,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:03:15,Demo-Hostel,02:00:00:00:00:03,02:00:00:00:00:03,WPA2-Personal,CCMP,32.0,-84.0,802.11n,2.4 GHz,1,2412.0,sample-synthetic
+2026-01-01 10:03:15,Demo-Hostel,02:00:00:00:00:04,02:00:00:00:00:04,WPA2-Personal,CCMP,45.0,-77.5,802.11n,2.4 GHz,11,2462.0,sample-synthetic
+2026-01-01 10:03:15,Demo-Cafe-Guest,02:00:00:00:00:05,02:00:00:00:00:05,Open,None,51.0,-74.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic
+2026-01-01 10:03:15,Demo-Phone-Hotspot,02:00:00:00:00:06,02:00:00:00:00:06,WPA3-Personal,CCMP,82.0,-59.0,802.11ac,5 GHz,149,5745.0,sample-synthetic
+2026-01-01 10:03:15,Demo-Lab-5G,02:00:00:00:00:07,02:00:00:00:00:07,WPA2-Personal,CCMP,74.0,-63.0,802.11ac,5 GHz,36,5180.0,sample-synthetic
+2026-01-01 10:03:15,(Hidden network),02:00:00:00:00:08,02:00:00:00:00:08,WPA2-Personal,CCMP,29.0,-85.5,802.11n,2.4 GHz,6,2437.0,sample-synthetic

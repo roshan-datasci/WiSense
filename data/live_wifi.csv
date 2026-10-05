@@ -1,2 +1,0 @@
-timestamp,state,interface,ssid,bssid,radio_type,channel,signal_percent,receive_rate_mbps,transmit_rate_mbps,authentication,encryption
-2026-10-01 17:50:44,CONNECTED,Wi-Fi,realme GT,ae:42:f7:09:86:e7,802.11ac,11,99,144.4,130,WPA2-Personal,CCMP
