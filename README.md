@@ -2,7 +2,7 @@
 
 ## Wi-Fi Intelligence & Analytics Dashboard
 
-[**Open Live Dashboard**](https://YOUR-APP-NAME.streamlit.app) &nbsp;·&nbsp; *(replace with your Streamlit Cloud link — the public link runs in [demo mode](#-public-dashboard-demo-mode))*
+[**Open Live Dashboard**](https://wisense-xpct7ici3cynnqhifnkp87.streamlit.app/) &nbsp;·&nbsp; *(public link runs in [demo mode](#-public-dashboard-demo-mode))*
 
 WiSense is a Data Science / Networking project that collects **real Wi-Fi measurements** from a device and turns them into understandable insights about signal quality, access points, channels, congestion, and connection performance — using Python, Pandas, NumPy, Plotly and Streamlit.
 
